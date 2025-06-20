@@ -1,3 +1,24 @@
-<div class="side-content-head"></div>
+<div class="side-content-head">
+  <div class="side-content-title">
+    <a href="#">Tom</a>
+  </div>
+  <div class="side-content-link-box">
+      <a class="side-chat-link">チャットを作成する</a>
+  </div>
+</div>
+<%# 仮置き %>
+<%
+  require 'ostruct'
+  @rooms = []
+  20.times do |t|
+    @rooms << OpenStruct.new(name: "techroom#{t + 1}")
+  end
+%>
+<%# ここまで %>
 <div class="side-content-item">
+  <% @rooms.each do |room|%>
+    <div class="side-room-link">
+      <a href="#"><%=room.name%></a>
+    </div>
+  <%end%>
 </div>
