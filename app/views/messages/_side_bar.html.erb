@@ -3,20 +3,12 @@
     <%=link_to current_user.name,edit_user_path(current_user)%>
   </div>
   <div class="side-content-link-box">
-      <a class="side-chat-link">チャットを作成する</a>
+      <%=link_to "チャットを作成する",new_room_path%>
   </div>
 </div>
-<%# 仮置き %>
-<%
-  require 'ostruct'
-  @rooms = []
-  20.times do |t|
-    @rooms << OpenStruct.new(name: "techroom#{t + 1}")
-  end
-%>
-<%# ここまで %>
+
 <div class="side-content-item">
-  <% @rooms.each do |room|%>
+  <% current_user.rooms.each do |room|%>
     <div class="side-room-link">
       <a href="#"><%=room.name%></a>
     </div>
