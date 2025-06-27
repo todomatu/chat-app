@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class="main-content-item">
-  <div class="main-content-item-name">
+  <%# <div class="main-content-item-name">
     <p class="main-content-item-name-name">Tom</p>
     <p class="main-content-item-name-month">2020/3/31(Wed) 12:43:30</p>
   </div>
@@ -17,8 +17,8 @@
     <p class="main-content-item-name-month">2020/3/31(Wed) 12:47:30</p>
   </div>
   <div class="main-content-item-text">
-    <p class="main-content-item-text-text">こんにちは</p>
-  </div>
+    <p class="main-content-item-text-text">こんにちは</p> %>
+    <%=render partial: 'message', collection: @messages%>
 </div>
 
 <%= form_with model:[@room,@message],html: {class: "main-content-foot"}, local: true do |f|%>
