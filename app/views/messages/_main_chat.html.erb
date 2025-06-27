@@ -20,13 +20,14 @@
     <p class="main-content-item-text-text">こんにちは</p>
   </div>
 </div>
-<div class="main-content-foot">
+
+<%= form_with model:[@room,@message],html: {class: "main-content-foot"}, local: true do |f|%>
   <div class="form-input">
-    <input class="main-content-foot-text" type="text" placeholder="type a message"/>
+    <%= f.text_field :content,class:'main-content-foot-text',placeholder: 'type a message'%>
     <label class="form-image">
       <span class="image-file">画像</span>
-      <input type="file" class="hidden">
+      <%= f.file_field :image,class:'hidden'%>
     </label>
   </div>
-  <input class="main-content-foot-button" type="submit" value="送信">
-</div>
+  <%=f.submit '送信', class: 'main-content-foot-button'%>
+<%end%>
