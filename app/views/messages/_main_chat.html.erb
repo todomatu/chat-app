@@ -1,32 +1,22 @@
 <div class="main-content-head">
-  <p>hogefuga</p>
+  <p>
+    <%=@room.name%>
+  </p>
   <div class="main-content-head-button">
-    <a href="#">チャットを終了する</a>
+    <%=link_to "チャットを終了する",room_path(@room.id),data: {turbo_method: :delete}%>
   </div>
 </div>
 <div class="main-content-item">
-  <div class="main-content-item-name">
-    <p class="main-content-item-name-name">Tom</p>
-    <p class="main-content-item-name-month">2020/3/31(Wed) 12:43:30</p>
-  </div>
-  <div class="main-content-item-text">
-    <p class="main-content-item-text-text">おはよう</p>
-  </div>
-  <div class="main-content-item-name">
-    <p class="main-content-item-name-name">Tom</p>
-    <p class="main-content-item-name-month">2020/3/31(Wed) 12:47:30</p>
-  </div>
-  <div class="main-content-item-text">
-    <p class="main-content-item-text-text">こんにちは</p>
-  </div>
+    <%=render partial: 'message', collection: @messages%>
 </div>
-<div class="main-content-foot">
+
+<%= form_with model:[@room,@message],html: {class: "main-content-foot"}, local: true do |f|%>
   <div class="form-input">
-    <input class="main-content-foot-text" type="text" placeholder="type a message"/>
+    <%= f.text_field :content,class:'main-content-foot-text',placeholder: 'type a message',required: true%>
     <label class="form-image">
       <span class="image-file">画像</span>
-      <input type="file" class="hidden">
+      <%= f.file_field :image,class:'hidden'%>
     </label>
   </div>
-  <input class="main-content-foot-button" type="submit" value="送信">
-</div>
+  <%=f.submit '送信', class: 'main-content-foot-button'%>
+<%end%>
